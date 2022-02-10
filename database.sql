@@ -40,7 +40,7 @@ GO
 USE WordleS
 GO
 
-CREATE TABLE [User] (
+CREATE TABLE Users (
 	id int IDENTITY(1,1) PRIMARY KEY,
 	pseudo varchar(50),
 	[login] varchar(50),
@@ -59,7 +59,7 @@ CREATE TABLE Roles (
 -------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------
 
-ALTER TABLE [User]
+ALTER TABLE Users
 ADD CONSTRAINT UserHasRole
-FOREIGN KEY (fkRole) REFERENCES [Role](id);
+FOREIGN KEY (fkRole) REFERENCES Roles(id);
 GO
