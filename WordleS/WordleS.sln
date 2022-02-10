@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordleS", "WordleS\WordleS.csproj", "{48F5EF68-1EB4-4B12-BF8F-E0FE55BD2689}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordleS", "WordleS\WordleS.csproj", "{C434549C-8EF9-4A82-B8AD-371609BD4F3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{48F5EF68-1EB4-4B12-BF8F-E0FE55BD2689}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{48F5EF68-1EB4-4B12-BF8F-E0FE55BD2689}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{48F5EF68-1EB4-4B12-BF8F-E0FE55BD2689}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{48F5EF68-1EB4-4B12-BF8F-E0FE55BD2689}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C434549C-8EF9-4A82-B8AD-371609BD4F3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C434549C-8EF9-4A82-B8AD-371609BD4F3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C434549C-8EF9-4A82-B8AD-371609BD4F3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C434549C-8EF9-4A82-B8AD-371609BD4F3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {82E66E49-DF01-4583-8338-71902C42CD53}
+		SolutionGuid = {8BE2D428-87F4-4ED0-9B56-CE04C92DB81D}
 	EndGlobalSection
 EndGlobal
