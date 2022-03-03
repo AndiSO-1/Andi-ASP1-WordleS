@@ -10,6 +10,10 @@ namespace WordleS.Data
             : base(options)
         {
         }
-        public DbSet<WordleS.Models.Word> Word { get; set; }
+        public DbSet<Word> Word { get; set; }
+
+        public DbSet<Game> Game { get; set; }
+
+        public DbSet<Attempt> Attempt { get; set; }
     }
 }
