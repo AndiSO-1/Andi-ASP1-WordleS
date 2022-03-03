@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using WordleS.Models;
 
 namespace WordleS.Data
 {
@@ -9,5 +10,6 @@ namespace WordleS.Data
             : base(options)
         {
         }
+        public DbSet<WordleS.Models.Word> Word { get; set; }
     }
 }
