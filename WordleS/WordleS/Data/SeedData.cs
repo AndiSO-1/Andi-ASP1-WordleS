@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using WordleS.Data;
 
 namespace WordleS.Models
@@ -11,17 +12,60 @@ namespace WordleS.Models
                 serviceProvider.GetRequiredService<
                     DbContextOptions<ApplicationDbContext>>()))
             {
-                if (context == null || context.Word == null)
+                if (context == null || context.Word == null || context.Roles == null || context.Users == null)
                 {
-                    throw new ArgumentNullException("Null RazorPagesWordContext");
+                    throw new ArgumentNullException("Null ApplicationDbContext");
                 }
 
                 // Look for any Words.
-                if (context.Word.Any())
+                if (context.Word.Any() || context.Roles.Any() || context.Users.Any())
                 {
                     return;   // DB has been seeded
                 }
 
+                // Create Users
+                var users = new IdentityUser[]
+                {
+                    new IdentityUser {
+                            UserName = "Admin",
+                            NormalizedUserName = "ADMIN",
+                            Email = "admin@gmail.com",
+                            NormalizedEmail = "ADMIN@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAENeXf2LpHxGiOlDxSNnRiTKiRl8bf9xCsAIo42qk1lJQk+vffT7pfXs3TXTi4ERApQ==",
+                    }
+                };
+
+                foreach (IdentityUser u in users)
+                {
+                    context.Users.Add(u);
+                }
+                context.SaveChanges();
+
+                // Create Roles
+                var roles = new IdentityRole[]
+                {
+                    new IdentityRole
+                    {
+                        Name = "Admin",
+                        NormalizedName = "ADMIN",
+                    }
+                };
+
+                foreach (IdentityRole r in roles)
+                {
+                    context.Roles.Add(r);
+                }
+                context.SaveChanges();
+
+                // Set to Admin user the Admin role
+                context.UserRoles.AddRange(
+                    new IdentityUserRole<string> {
+                        UserId = users.Single(u => u.NormalizedUserName == "ADMIN").Id,
+                        RoleId = roles.Single(r => r.NormalizedName == "ADMIN").Id,
+                    }    
+                );
+
+                // Create Words
                 context.Word.AddRange(
                     new Word { Value = "COMME", },
                     new Word { Value = "CETTE", },
