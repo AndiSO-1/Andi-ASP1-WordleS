@@ -65,6 +65,16 @@ namespace WordleS.Models
                     }    
                 );
 
+                // Create Claim Role for Admin
+                context.RoleClaims.AddRange(
+                    new IdentityRoleClaim<string>
+                    {
+                        RoleId = roles.Single(r => r.NormalizedName == "ADMIN").Id,
+                        ClaimType = "role",
+                        ClaimValue = "admin",
+                    }
+                );
+
                 // Create Words
                 context.Word.AddRange(
                     new Word { Value = "COMME", },
