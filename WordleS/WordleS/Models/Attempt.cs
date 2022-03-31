@@ -11,7 +11,7 @@ namespace WordleS.Models
         public string Value { get; set; }
 
         [Required]
-        public bool Position { get; set; }
+        public int Position { get; set; }
 
         [Required]
         public Game Game { get; set; }
