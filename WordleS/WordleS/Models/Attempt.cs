@@ -7,7 +7,8 @@ namespace WordleS.Models
         public int Id { get; set; }
 
         [Required]
-        public bool Value { get; set; }
+        [StringLength(5), MinLength(5)]
+        public string Value { get; set; }
 
         [Required]
         public bool Position { get; set; }
