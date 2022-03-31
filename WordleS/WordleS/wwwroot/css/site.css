@@ -16,3 +16,33 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.particletext {
+    text-align: center;
+    position: relative;
+}
+
+.particletext.bubbles > .particle {
+    opacity: 0;
+    position: absolute;
+    background-color: rgba(33, 150, 243, 0.5);
+    animation: bubbles 3s ease-in infinite;
+    border-radius: 100%;
+}
+
+@keyframes bubbles {
+    0% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+        transform: translate(0, -20%);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(0, -1000%);
+    }
+}
+ 
