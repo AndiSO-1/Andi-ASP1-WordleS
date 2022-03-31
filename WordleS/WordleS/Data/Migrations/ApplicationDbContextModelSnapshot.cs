@@ -358,7 +358,7 @@ namespace WordleS.Data.Migrations
             modelBuilder.Entity("WordleS.Models.Attempt", b =>
                 {
                     b.HasOne("WordleS.Models.Game", "Game")
-                        .WithMany()
+                        .WithMany("Attempt")
                         .HasForeignKey("GameId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -375,7 +375,7 @@ namespace WordleS.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("WordleS.Models.Word", "Word")
-                        .WithMany()
+                        .WithMany("Game")
                         .HasForeignKey("WordId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -383,6 +383,16 @@ namespace WordleS.Data.Migrations
                     b.Navigation("User");
 
                     b.Navigation("Word");
+                });
+
+            modelBuilder.Entity("WordleS.Models.Game", b =>
+                {
+                    b.Navigation("Attempt");
+                });
+
+            modelBuilder.Entity("WordleS.Models.Word", b =>
+                {
+                    b.Navigation("Game");
                 });
 #pragma warning restore 612, 618
         }

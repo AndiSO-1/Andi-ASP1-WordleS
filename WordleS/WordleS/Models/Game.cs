@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WordleS.Models
 {
-    public class Game
+    public partial class Game
     {
         public int Id { get; set; }
 

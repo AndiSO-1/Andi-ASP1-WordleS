@@ -167,7 +167,7 @@ namespace WordleS.Controllers
 
             int nbAttempts = _context.Attempt.Count(m => m.Game.Id == game.Id);
 
-            if (nbAttempts < 6)
+            if (game.AllowNewTry(nbAttempts))
             {
                 _context.Attempt.Add(
                       new()
@@ -187,7 +187,7 @@ namespace WordleS.Controllers
 
                     return RedirectToAction("play", (id: game.Id, win: true));
                 }
-                else if (nbAttempts == 5)
+                else if (nbAttempts == game.MaxAttempt-1)
                 {
                     game.Finished = true;
                     game.Win = false;
