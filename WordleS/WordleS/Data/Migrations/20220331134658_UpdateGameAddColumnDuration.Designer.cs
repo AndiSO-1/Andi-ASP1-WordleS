@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WordleS.Data;
 
@@ -11,9 +12,10 @@ using WordleS.Data;
 namespace WordleS.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220331134658_UpdateGameAddColumnDuration")]
+    partial class UpdateGameAddColumnDuration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -358,7 +360,7 @@ namespace WordleS.Data.Migrations
             modelBuilder.Entity("WordleS.Models.Attempt", b =>
                 {
                     b.HasOne("WordleS.Models.Game", "Game")
-                        .WithMany()
+                        .WithMany("Attempt")
                         .HasForeignKey("GameId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -375,7 +377,7 @@ namespace WordleS.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("WordleS.Models.Word", "Word")
-                        .WithMany()
+                        .WithMany("Game")
                         .HasForeignKey("WordId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -383,6 +385,16 @@ namespace WordleS.Data.Migrations
                     b.Navigation("User");
 
                     b.Navigation("Word");
+                });
+
+            modelBuilder.Entity("WordleS.Models.Game", b =>
+                {
+                    b.Navigation("Attempt");
+                });
+
+            modelBuilder.Entity("WordleS.Models.Word", b =>
+                {
+                    b.Navigation("Game");
                 });
 #pragma warning restore 612, 618
         }

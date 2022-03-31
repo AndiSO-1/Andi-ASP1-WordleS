@@ -16,6 +16,8 @@ namespace WordleS.Models
         [Required]
         public int MaxAttempt { get; set; }
 
+        public int Duration { get; set; }
+
         [Required]
         public Word Word { get; set; }
 
