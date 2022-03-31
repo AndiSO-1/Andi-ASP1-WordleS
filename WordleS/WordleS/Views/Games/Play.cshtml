@@ -25,17 +25,17 @@
                         {
                             case "right":
                                 <text>
-                                    <div class="bg-success p-3">@ac[0]</div>
+                                    <div class="letter bg-success p-3">@ac[0]</div>
                                 </text>
                                 break;
                             case "close":
                                 <text>
-                                    <div class="bg-warning p-3">@ac[0]</div>
+                                    <div class="letter bg-warning p-3">@ac[0]</div>
                                 </text>
                                 break;
                             default:
                                 <text>
-                                    <div class="bg-secondary p-3">@ac[0]</div>
+                                    <div class="letter bg-secondary p-3">@ac[0]</div>
                                 </text>
                                 break;
                         }
@@ -59,8 +59,8 @@
         </div>
     </form>
 </div>
-
 @section Scripts {
+    <script src="~/js/game.js" asp-append-version="true"></script>
     @{
     await Html.RenderPartialAsync("_ValidationScriptsPartial");
 }

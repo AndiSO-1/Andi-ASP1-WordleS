@@ -1,0 +1,3 @@
+﻿$(function () {
+    $(".letter").addClass("flip");
+});
