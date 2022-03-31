@@ -9,5 +9,8 @@ namespace WordleS.Models
         [Required]
         [StringLength(5), MinLength(5)]
         public string Value { get; set; }
+
+        [Required]
+        public ICollection<Game> Game { get; set; }
     }
 }

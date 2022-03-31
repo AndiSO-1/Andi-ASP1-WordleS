@@ -21,5 +21,7 @@ namespace WordleS.Models
 
         [Required]
         public IdentityUser User { get; set; }
+
+        public ICollection<Attempt> Attempt { get; set; }
     }
 }

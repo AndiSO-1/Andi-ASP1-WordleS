@@ -1,0 +1,68 @@
+﻿@model WordleS.Models.Attempt
+@{
+    ViewData["Title"] = "Jouer";
+    string? msg = ViewData["Message"] as string;
+    string? tmpWin = ViewData["Win"] as string;
+    bool win;
+    if (tmpWin!= null)
+    { 
+        win = tmpWin == "true" ? true : false;
+    }
+    List<AttemptViewModel>? attempts = ViewData["Attempts"] as List<AttemptViewModel>;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Veuillez entrer un mot</h1>
+    <form asp-action="Try">
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group row g-3">
+            @foreach (AttemptViewModel item in attempts)
+            {
+                <div class="d-flex flex-row justify-content-center">
+                    @foreach (string[] ac in item.CheckedChars)
+                    {
+                        switch (ac[1])
+                        {
+                            case "right":
+                                // Use the text block below to separate html elements from code
+                                <text>
+                                    <div class="bg-success p-3">@ac[0]</div>
+                                </text>
+                                break;  // Always break each case
+                            case "close":
+                                <text>
+                                    <div class="bg-warning p-3">@ac[0]</div>
+                                </text>
+                                break;
+                            default:
+                                <text>
+                                    <div class="bg-secondary p-3">@ac[0]</div>
+                                </text>
+                                break;
+                        }
+                    }
+                </div>
+            }
+            @if (msg != null)
+            {
+                <p class="text-danger">@msg</p>
+            }
+
+            <div class="col">
+                <input asp-for="Value" class="form-control" />
+            </div>
+            <div class="col-auto">
+                <input type="submit" value="Vérifier" class="btn btn-primary" />
+            </div>
+        </div>
+        <div>
+            <span asp-validation-for="Value" class="text-danger"></span>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

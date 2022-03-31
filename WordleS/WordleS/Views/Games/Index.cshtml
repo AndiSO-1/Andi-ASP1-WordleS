@@ -1,0 +1,29 @@
+﻿@model IEnumerable<WordleS.Models.Game>
+@{
+    ViewData["Title"] = "Accueil";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Choisir une partie</h1>
+    <div class="my-5">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="submit" value="Nouvelle partie !" class="btn btn-primary" />
+            </div>
+        </form>
+        @if (Model != null)
+        {
+            <div class="mt-5">
+                <h2 class="">Partie non terminée</h2>
+                <div class="d-flex flex-wrap justify-content-evenly mt-3 px-3">
+                    @foreach (Game game in Model.OrderBy(m => m.Id))
+                    {
+                        <a asp-action="Play" asp-route-id="@game.Id" class="btn btn-secondary mb-4">Partie @Html.DisplayFor(modelItem => game.Id)</a>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
