@@ -21,24 +21,7 @@
                 <div class="d-flex flex-row justify-content-center">
                     @foreach (string[] ac in item.CheckedChars)
                     {
-                        switch (ac[1])
-                        {
-                            case "right":
-                                <text>
-                                    <div class="letter bg-success p-3">@ac[0]</div>
-                                </text>
-                                break;
-                            case "close":
-                                <text>
-                                    <div class="letter bg-warning p-3">@ac[0]</div>
-                                </text>
-                                break;
-                            default:
-                                <text>
-                                    <div class="letter bg-secondary p-3">@ac[0]</div>
-                                </text>
-                                break;
-                        }
+                        @(await @Html.PartialAsync("_Letter", new ViewDataDictionary(ViewData) { { "CheckedChars", ac } }))
                     }
                 </div>
             }

@@ -50,3 +50,8 @@ body {
     transform: rotateY(360deg);
     transition: transform 1.5s;
 }
+
+.box-letter {
+    height: 100px;
+    width: 100px;
+}
