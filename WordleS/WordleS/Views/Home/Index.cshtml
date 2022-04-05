@@ -5,7 +5,40 @@
 <div class="text-center">
     <h1 class="display-4 text-center"><span class="particletext bubbles">Jouer à WordleS</span></h1>
     <div class="my-5">
-        <p>Décrire les règles ici</p>
         <a class="btn btn-primary" asp-area="" asp-controller="Games" asp-action="Index">Jouer à WordlS !</a>
+        <div class="mt-5 text-center">
+            <p>Comment jouer ?</p>
+            <p>
+                Ce jeu reprend exactement le même concept que le Wordle.
+            </p>
+
+            <p>
+                Un mot de 5 lettres est choisi aléatoirement. Vous devez le deviner en 6 essais.
+            </p>
+
+            <p>
+                À chaque essai, les lettres du mot que vous avez proposé changeront de couleur en fonction de à quel point vous êtes proche de le trouver.
+            </p>
+            <div class="d-flex flex-row justify-content-between">
+                <div class="d-flex flex-column justify-content-center align-items-center border border-success p-3">
+                    <p>
+                        Le vert est à la bonne place
+                    </p>
+                    @(await @Html.PartialAsync("_Letter", new ViewDataDictionary(ViewData) { { "CheckedChars", new string[]{"L", "right"} } }))
+                </div>
+                <div class="d-flex flex-column justify-content-center align-items-center border border-warning p-3">
+                    <p>
+                        Le jaune est à la mauvaise place
+                    </p>
+                    @(await @Html.PartialAsync("_Letter", new ViewDataDictionary(ViewData) { { "CheckedChars", new string[]{"L", "close"} } }))
+                </div>
+                <div class="d-flex flex-column justify-content-center align-items-center border border-secondary p-3">
+                    <p>
+                        Le gris n'est pas dans le mot place
+                    </p>
+                    @(await @Html.PartialAsync("_Letter", new ViewDataDictionary(ViewData) { { "CheckedChars", new string[]{"L", ""} } }))
+                </div>
+            </div>
+        </div>
     </div>
 </div>
