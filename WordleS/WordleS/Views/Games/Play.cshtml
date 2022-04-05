@@ -4,8 +4,8 @@
     string? msg = ViewData["Message"] as string;
     string? tmpWin = ViewData["Win"] as string;
     bool win;
-    if (tmpWin!= null)
-    { 
+    if (tmpWin != null)
+    {
         win = tmpWin == "true" ? true : false;
     }
     List<AttemptViewModel>? attempts = ViewData["Attempts"] as List<AttemptViewModel>;
@@ -43,8 +43,8 @@
     </form>
 </div>
 @section Scripts {
-    <script src="~/js/game.js" asp-append-version="true"></script>
+<script src="~/js/game.js" asp-append-version="true"></script>
     @{
-    await Html.RenderPartialAsync("_ValidationScriptsPartial");
-}
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
